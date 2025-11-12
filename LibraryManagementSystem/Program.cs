@@ -7,14 +7,14 @@ namespace LibraryManagementSystem
     {
         static void Main(string[] args)
         {
+            //List<Book> books = [];
+            ApplicationDbContext _db = new();
+
             do
             {
 
-                List<Book> books = [];
-                ApplicationDbContext _db = new();
-
                 Console.WriteLine("\n1. Add New Book");
-                Console.WriteLine("2. Quit");
+                Console.WriteLine("2. Add New Book");
 
                 Console.WriteLine("Enter Your Selection");
                 int selection = Convert.ToInt32(Console.ReadLine());
@@ -56,6 +56,42 @@ namespace LibraryManagementSystem
                             _db.SaveChanges();
 
                             Console.WriteLine("Add Book Successfully");
+                        }
+                        break;
+                    case 2:
+                        {
+                            Console.WriteLine("Enter Id");
+                            string id = Console.ReadLine();
+
+                            Console.WriteLine("Enter First Name");
+                            string firstName = Console.ReadLine();
+
+                            Console.WriteLine("Enter Last Name");
+                            string lastName = Console.ReadLine();
+
+                            Console.WriteLine("Enter Phone");
+                            string phone = Console.ReadLine();
+
+                            Console.WriteLine("Enter Email");
+                            string email = Console.ReadLine();
+
+                            Console.WriteLine("Enter Address");
+                            string address = Console.ReadLine();
+
+                            User user = new()
+                            {
+                                Id = id,
+                                FirstName = firstName,
+                                LastName = lastName,
+                                PhoneNumber = phone,
+                                Email = email,
+                                Address = address
+                            };
+
+                            _db.Users.Add(user);
+                            _db.SaveChanges();
+
+                            Console.WriteLine("Add User Successfully");
                         }
                         break;
                 }
