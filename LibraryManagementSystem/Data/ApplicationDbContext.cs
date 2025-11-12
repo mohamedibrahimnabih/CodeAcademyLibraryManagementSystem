@@ -10,6 +10,10 @@ namespace LibraryManagementSystem.Data
 {
     internal class ApplicationDbContext : DbContext
     {
+        public DbSet<User> Users { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
